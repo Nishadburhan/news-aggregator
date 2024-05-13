@@ -11,6 +11,10 @@ const userSchema = new Schema({
         type: String,
         required: true
     },
+    preferences: {
+        type: [String],
+        default: null,
+    },
     crated_at: {
         type: Date,
         default: Date.now()
