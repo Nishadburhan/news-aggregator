@@ -2,13 +2,18 @@ require('dotenv').config();
 const express = require('express');
 const app = express();
 const mongoose = require('mongoose');
-const userController = require('./src/routes/userController');
 const port = process.env.PORT || 3000;
+
+const userController = require('./src/routes/userController');
+const preferenceController = require('./src/routes/preferenceController');
+const newsController = require('./src/routes/newsController');
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 app.use('/auth', userController);
+app.use('/api', preferenceController);
+app.use('/api', newsController);
 
 app.get('/', (req, res) => {
     res.send("Welcome To news aggregator API")
